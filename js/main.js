@@ -55,7 +55,7 @@ var cards = [
     }
     ];
     
-var cardsInPlay = []
+var cardsInDeck = []
 var dealerHand = []
 var playerHand = []
 
@@ -78,10 +78,24 @@ function shuffle(array) {
     cardsInPlay = array
     return cardsInPlay
 }
-      
+
+function dealPlayer() {
+    let newCard = cardsInDeck.pop()
+    // let newCardElement = document.createElement('img')
+    // newCardElement.setAttribute('src', "images/card-images/2C.png")
+    // document.getElementById('player-hand').appendChild(newCardElement)
+}
+
+
+function dealDealer() {
+    dealerHand.push(cardsInPlay[0])
+}
+
 function initiateGame() {
     shuffle(cards)
-
+    dealPlayer()
 }
+
+initiateGame();
 
 
