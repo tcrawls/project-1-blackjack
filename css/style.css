@@ -1,4 +1,23 @@
-/* div {
-    background-color: red;
-    text-transform: uppercase;
-} */
+header {
+    margin: 0 auto;
+}
+
+img {
+    height: 100%;
+    width: auto;
+    margin: 10px
+}
+
+.player-cards {
+    width: 1000px;
+    height: 160px;
+}
+
+.dealer-cards {
+    width: 1000px;
+    height: 160px;
+}
+
+.buttons {
+    display: block;
+}
