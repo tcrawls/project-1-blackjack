@@ -7,6 +7,8 @@ header {
     margin: 0 auto;
     background-color: grey;
     text-align: center;
+    font-size: 150%;
+    margin: 5px;
 }
 
 #table {
@@ -27,7 +29,8 @@ header {
 } */
 
 #dealer-score, #player-score, #overall-score {
-    background-color: lightsalmon;
+    /* background-color: lightsalmon; */
+    margin: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -39,8 +42,9 @@ h3 {
 }
 
 .dealer-hand, .player-hand {
-    height: 160px;
+    height: 140px;
     background-color: lightgrey;
+    margin: 0 20px;
 }
 
 .buttons {
@@ -53,7 +57,7 @@ h3 {
     background-color: darkgoldenrod;
     border: none;
     color: white;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     text-decoration: none;
     /* display: inline-block; */
@@ -66,7 +70,7 @@ h3 {
     background-color: darkgoldenrod;
     border: none;
     color: white;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     text-decoration: none;
     /* display: inline-block; */
@@ -79,7 +83,7 @@ h3 {
     background-color: darkgoldenrod;
     border: none;
     color: white;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     text-decoration: none;
     /* display: inline-block; */
