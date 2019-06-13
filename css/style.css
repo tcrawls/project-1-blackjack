@@ -5,7 +5,7 @@ body {
 
 header {
     margin: 0 auto;
-    background-color: grey;
+    background-color: lightGrey;
     text-align: center;
     font-size: 150%;
     margin: 5px;
@@ -19,7 +19,7 @@ header {
     margin: 0 auto;
     height: 600px; */
     margin: auto;
-    height: 500px;
+    height: 520px;
     width: 900px;
     background-color:rgb(119, 163, 119);
     border-radius: 20px;
@@ -51,11 +51,17 @@ h3 {
     margin: 5px 5px;
 }
 
-.dealer-hand, .player-hand {
-    height: 110px;
+#dealer-hand, #player-hand {
+    height: 130px;
     width: 700px;
-    background-color: lightgrey;
+    background-color:grey;
     margin: auto;
+}
+
+.hand img {
+    height: 130px;
+    width: auto;
+    margin-right: 10px;
 }
 
 .buttons {
