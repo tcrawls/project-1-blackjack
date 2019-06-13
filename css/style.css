@@ -9,13 +9,20 @@ header {
     text-align: center;
     font-size: 150%;
     margin: 5px;
+    height: 100px;
+    border-radius: 20px;
 }
 
 #table {
-    background-color: lightgreen;
+    /* background-color: lightgreen;
     width: 90%;
     margin: 0 auto;
-    height: 600px;
+    height: 600px; */
+    margin: auto;
+    height: 500px;
+    width: 900px;
+    background-color:rgb(119, 163, 119);
+    border-radius: 20px;
 }
 
 #message {
@@ -33,18 +40,22 @@ header {
     margin: 20px;
     display: flex;
     flex-direction: row;
+    text-align: left;
+    width: 600px;
+    margin: 10px auto 10px;
 }
 
 h3 {
-    justify-content: flex-start;
-    align-items: center;
-    /* margin: 5px 5px; */
+    /* justify-content: flex-start;
+    align-items: center; */
+    margin: 5px 5px;
 }
 
 .dealer-hand, .player-hand {
-    height: 140px;
+    height: 110px;
+    width: 700px;
     background-color: lightgrey;
-    margin: 0 20px;
+    margin: auto;
 }
 
 .buttons {
@@ -55,6 +66,7 @@ h3 {
 
 #deal {
     background-color: darkgoldenrod;
+    width: 100px;
     border: none;
     color: white;
     padding: 15px;
@@ -68,6 +80,7 @@ h3 {
 
   #stand {
     background-color: darkgoldenrod;
+    width: 100px;
     border: none;
     color: white;
     padding: 15px;
@@ -81,6 +94,7 @@ h3 {
 
   #hit {
     background-color: darkgoldenrod;
+    width: 100px;
     border: none;
     color: white;
     padding: 15px;
