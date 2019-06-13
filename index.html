@@ -13,42 +13,44 @@
 <body>
     <header>
         <h1>BlackJack</h1>
-        <h2>Overall Score</h2>
     </header>
-    <main>
+    <main id="table">
         <div id="message">
             <h2>Good luck!</h2>
         </div>
-        <div id="game-board">
-            <div class="dealer-cards">
-                <img src="images/back.png" id="card-one">
-                <img src="images/back.png" id="card-two">
-                <img src="images/back.png" id="card-three">
-                <img src="images/back.png" id="card-four">
-                <img src="images/back.png" id="card-five">
-                <img src="images/back.png" id="card-six">
-            </div>
-            <div id="dealer-score">
-                <h3>Dealer Score:</h3>
-                <h3>00</h3>
-            </div>
-            <div class="buttons">
-                <button id="deal">Deal</button>
-                <button id="stand">Stand</button>
-                <button id="deal">Hit</button>
-            </div>
-            <div class="player-cards">
-                <img src="images/back.png" id="card-one">
-                <img src="images/back.png" id="card-two">
-                <img src="images/back.png" id="card-three">
-                <img src="images/back.png" id="card-four">
-                <img src="images/back.png" id="card-five">
-                <img src="images/back.png" id="card-six">
-            </div>
-            <div id="player-score">
-                <h3>Player Score:</h3>
-                <h3>00</h3>
-            </div>
+        <div id="dealer-score">
+            <h3>Dealer:</h3>
+            <h3>00</h3>
+        </div>
+        <div class="dealer-hand">
+            <img src="images/back.png" id="card-one">
+            <img src="images/back.png" id="card-two">
+            <img src="images/back.png" id="card-three">
+            <img src="images/back.png" id="card-four">
+            <img src="images/back.png" id="card-five">
+            <img src="images/back.png" id="card-six">
+        </div>
+        <div id="player-score">
+            <h3>Player:</h3>
+            <h3>00</h3>
+        </div>
+        <div class="player-hand">
+            <img src="images/back.png" id="card-one">
+            <img src="images/back.png" id="card-two">
+            <img src="images/back.png" id="card-three">
+            <img src="images/back.png" id="card-four">
+            <img src="images/back.png" id="card-five">
+            <img src="images/back.png" id="card-six">
+        </div>
+        <div class="buttons">
+            <button id="deal">Deal</button>
+            <button id="stand">Stand</button>
+            <button id="deal">Hit</button>
+        </div>
+        <div id="overall-score">
+            <h3>Overall Score:</h3>
+            <h3>00</h3>
+        </div>
         </div>
         <footer>Copyright</footer>
     </main>
