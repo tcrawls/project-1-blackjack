@@ -1,21 +1,48 @@
-header {
-    margin: 0 auto;
+body {
+    width: 100%;
+    height: 100%;
 }
 
-img {
+header {
+    margin: 0 auto;
+    background-color: grey;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+#table {
+    background-color: lightgreen;
+    width: 90%;
+    margin: 0 auto;
+    height: 600px;
+    justify-content: center;
+}
+
+/* img {
     height: 100%;
     width: auto;
     margin: 10px
+} */
+
+#dealer-score, #player-score, #overall-score {
+    background-color: lightsalmon;
+    display: flex;
+    flex-direction: row;
 }
 
-.player-cards {
-    width: 1000px;
-    height: 160px;
+h3 {
+    justify-content: flex-start;
+    align-items: center;
+    /* margin: 5px 5px; */
 }
 
-.dealer-cards {
-    width: 1000px;
+.dealer-hand, .player-hand {
     height: 160px;
+    background-color: lightgrey;
 }
 
 .buttons {
