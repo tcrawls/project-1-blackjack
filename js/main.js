@@ -101,6 +101,8 @@ var cards = [
 var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
+var dealerScore = 0
+var playerScore = 0
 
 // FUNCTION: shuffle deck and store in cardsInDeck
 function shuffle(array) {
@@ -128,6 +130,9 @@ function dealPlayer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
+    playerScore += newCard.points
+    document.getElementById('player-points').innerhtml = playerScore.toString()
+    console.log(playerScore)
 }
 
 function dealDealer() {
@@ -136,6 +141,9 @@ function dealDealer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
+    dealerScore += newCard.points
+    document.getElementById('dealer-points').innerhtml = dealerScore.toString()
+    console.log(dealerScore)
 }
 
 // Pop from cardsInDeck array; push to dealerCards array; create new <img> element with src=cardBack
@@ -145,6 +153,7 @@ function dealMysteryCard () {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardBack)
     document.getElementById('dealer-hand').appendChild(newCardElement)
+    dealerScore += newCard.points
 }
 
 // Flip over the mystery card (display the cardFront)
@@ -161,7 +170,6 @@ function initiateGame() {
     dealPlayer()
     dealDealer()
 }
-
 
 document.getElementById('deal').addEventListener('click', initiateGame)
 document.getElementById('hit').addEventListener('click', dealPlayer)
