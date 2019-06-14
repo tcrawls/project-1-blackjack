@@ -89,8 +89,101 @@ var cards = [
         suit: "clubs",
         cardFront: "images/card-images/AC.png",
         cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 2,
+        rank: "two",
+        suit: "hearts",
+        cardFront: "images/card-images/2H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 3,
+        rank: "three",
+        suit: "hearts",
+        cardFront: "images/card-images/3H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 4,
+        rank: "four",
+        suit: "hearts",
+        cardFront: "images/card-images/4H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 5,
+        rank: "five",
+        suit: "hearts",
+        cardFront: "images/card-images/5H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 6,
+        rank: "six",
+        suit: "hearts",
+        cardFront: "images/card-images/6H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 7,
+        rank: "seven",
+        suit: "hearts",
+        cardFront: "images/card-images/7H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 8,
+        rank: "eight",
+        suit: "hearts",
+        cardFront: "images/card-images/8H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 9,
+        rank: "nine",
+        suit: "hearts",
+        cardFront: "images/card-images/9H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "ten",
+        suit: "hearts",
+        cardFront: "images/card-images/10H.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "jack",
+        suit: "hearts",
+        cardFront: "images/card-images/JH.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "queen",
+        suit: "hearts",
+        cardFront: "images/card-images/QH.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "king",
+        suit: "hearts",
+        cardFront: "images/card-images/KH.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 11,
+        rank: "ace",
+        suit: "hearts",
+        cardFront: "images/card-images/AH.png",
+        cardBack: "images/card-images/blue_back.png"
     }
     ];
+
+
 
 //Add card front and card back to each object
 //when dealing cards, push to dealer and player arrays first
@@ -105,6 +198,7 @@ var dealerScore = 0
 var playerScore = 0
 
 // FUNCTION: shuffle deck and store in cardsInDeck
+//  *Citation: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex
 
@@ -131,6 +225,9 @@ function dealPlayer() {
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
     playerScore += newCard.points
+    if (playerScore > 21) {
+        alert('You busted!')
+    }
     document.getElementById('player-points').innerhtml = playerScore.toString()
     console.log(playerScore)
 }
@@ -153,13 +250,14 @@ function dealMysteryCard () {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardBack)
     document.getElementById('dealer-hand').appendChild(newCardElement)
-    dealerScore += newCard.points
 }
 
 // Flip over the mystery card (display the cardFront)
 function stand() {
     let mysteryCard = document.getElementById('dealer-hand').firstElementChild
     mysteryCard.setAttribute('src', dealerCards[0].cardFront)
+    dealerScore += dealerCards[0].points
+    console.log(dealerScore)
     //count dealer points, and if >16, compare score, if not, dealDealer again
 }
 

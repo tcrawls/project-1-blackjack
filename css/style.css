@@ -21,7 +21,7 @@ header {
     margin: auto;
     height: 520px;
     width: 900px;
-    background-color:rgb(119, 163, 119);
+    background-color:rgb(48, 99, 48);
     border-radius: 20px;
 }
 
@@ -43,6 +43,7 @@ header {
     text-align: left;
     width: 600px;
     margin: 10px auto 10px;
+    color: white;
 }
 
 h3 {
@@ -54,7 +55,7 @@ h3 {
 #dealer-hand, #player-hand {
     height: 130px;
     width: 700px;
-    background-color:grey;
+    /* background-color:grey; */
     margin: auto;
 }
 
@@ -74,45 +75,18 @@ h3 {
     text-align: center;
 }
 
-#deal {
-    background-color: darkgoldenrod;
-    width: 100px;
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    font-size: 16px;
-    margin: 6px 5px;
-    border-radius: 12px;
-  }
-
-  #stand {
-    background-color: darkgoldenrod;
-    width: 100px;
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    font-size: 16px;
-    margin: 6px 5px;
-    border-radius: 12px;
-  }
-
-  #hit {
-    background-color: darkgoldenrod;
-    width: 100px;
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    font-size: 16px;
-    margin: 6px 5px;
-    border-radius: 12px;
+  div button {
+      font-weight: 500;
+      background-color: rgb(206, 158, 36);
+      width: 100px;
+      border: none;
+      color: rgba(255, 255, 255, 0.856);
+      padding: 15px;
+      text-align: center;
+      text-decoration: none;
+      /* display: inline-block; */
+      font-size: 16px;
+      margin: 6px 5px;
+      border-radius: 12px;
   }
   
