@@ -95,16 +95,19 @@ function shuffle(array) {
 }
 
 function dealPlayer() {
-    let newCard = cardsInDeck.pop()
+    // let newCard = cardsInDeck.pop()
+    playerCards.push(cardsInDeck.pop())
+    let newCard = playerCards[playerCards.length - 1]
     let newCardElement = document.createElement('img')
-    newCardElement.setAttribute('src', newCard.cardImage)
+    newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
 }
 
 function dealDealer() {
-    let newCard = cardsInDeck.pop()
+    dealerCards.push(cardsInDeck.pop())
+    let newCard = dealerCards[dealerCards.length - 1]
     let newCardElement = document.createElement('img')
-    newCardElement.setAttribute('src', newCard.cardImage)
+    newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
