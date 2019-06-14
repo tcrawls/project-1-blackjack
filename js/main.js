@@ -366,13 +366,16 @@ var cards = [
     ]
 
 
+//*** TO DO ***/
 
-//Add card front and card back to each object
-//when dealing cards, push to dealer and player arrays first
 //create separate function for first flipped card deal (it also won't increment score until "stand")
-//on initial deal, make first dealerCard image "card-back.png"
 //on "stand", change dealerCards[0] image to "card front" and increment dealer's score by it's "points" property
-    
+
+// Get scores to display on screen
+// Account for Ace values (anytime score > 21, reset Ace points from 11 to 1) -- store a conditional function as the property of Ace-points?
+// Clear table after a game  
+// Implement player messages from console logs  
+
 var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
@@ -410,7 +413,7 @@ function dealPlayer() {
     // pointsPlayer.innerhtml = newCard.points
     playerScore += newCard.points
     if (playerScore > 21) {
-        alert('You busted!')
+        console.log('You busted!')
     }
     console.log(playerScore)
 }
@@ -465,6 +468,7 @@ function compareScores () {
     }
 }
 
+//USE JQUERY .empty() method to empty all elements from a parent element
 // function clearTable () {
 //     if (playerCards !== []) {
 //         playerCards.pop()
@@ -494,6 +498,9 @@ function initiateGame() {
     dealMysteryCard()
     dealPlayer()
     dealDealer()
+    if (playerScore === 21) {
+        console.log("Black Jack! You win!")
+    }
 }
 
 document.getElementById('deal').addEventListener('click', initiateGame)
