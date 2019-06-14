@@ -75,27 +75,31 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex]
         array[randomIndex] = temporaryValue
     }
-    cardsInPlay = array
-    return cardsInPlay
+    cardsInDeck = array
+    return cardsInDeck
 }
 
 function dealPlayer() {
     let newCard = cardsInDeck.pop()
-    // let newCardElement = document.createElement('img')
-    // newCardElement.setAttribute('src', "images/card-images/2C.png")
-    // document.getElementById('player-hand').appendChild(newCardElement)
+    let newCardElement = document.createElement('img')
+    newCardElement.setAttribute('src', newCard.cardImage)
+    document.getElementById('player-hand').appendChild(newCardElement)
 }
 
-
 function dealDealer() {
-    dealerHand.push(cardsInPlay[0])
+    let newCard = cardsInDeck.pop()
+    let newCardElement = document.createElement('img')
+    newCardElement.setAttribute('src', newCard.cardImage)
+    document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
 function initiateGame() {
     shuffle(cards)
     dealPlayer()
+    dealDealer()
+    dealPlayer()
+    dealDealer()
 }
-
-initiateGame();
+document.getElementById('deal').addEventListener('click', initiateGame)
 
 
