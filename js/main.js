@@ -1,90 +1,90 @@
 var cards = [
     {
-        points: "2",
+        points: 2,
         rank: "two",
         suit: "clubs",
         cardFront: "images/card-images/2C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '3',
+        points: 3,
         rank: "three",
         suit: "clubs",
         cardFront: "images/card-images/3C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '4',
+        points: 4,
         rank: "four",
         suit: "clubs",
         cardFront: "images/card-images/4C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '5',
+        points: 5,
         rank: "five",
         suit: "clubs",
         cardFront: "images/card-images/5C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '6',
+        points: 6,
         rank: "six",
         suit: "clubs",
         cardFront: "images/card-images/6C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '7',
+        points: 7,
         rank: "seven",
         suit: "clubs",
         cardFront: "images/card-images/7C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '8',
+        points: 8,
         rank: "eight",
         suit: "clubs",
         cardFront: "images/card-images/8C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '9',
+        points: 9,
         rank: "nine",
         suit: "clubs",
         cardFront: "images/card-images/9C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '10',
+        points: 10,
         rank: "ten",
         suit: "clubs",
         cardFront: "images/card-images/10C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '10',
+        points: 10,
         rank: "jack",
         suit: "clubs",
         cardFront: "images/card-images/JC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '10',
+        points: 10,
         rank: "queen",
         suit: "clubs",
         cardFront: "images/card-images/QC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '10',
+        points: 10,
         rank: "king",
         suit: "clubs",
         cardFront: "images/card-images/KC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: '11',
+        points: 11,
         rank: "ace",
         suit: "clubs",
         cardFront: "images/card-images/AC.png",
@@ -406,8 +406,9 @@ function dealPlayer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
-    document.getElementById('player-points').innerhtml = newCard.points
-    playerScore += Number(newCard.points)
+    // let pointsPlayer = document.getElementById('player-points')
+    // pointsPlayer.innerhtml = newCard.points
+    playerScore += newCard.points
     if (playerScore > 21) {
         alert('You busted!')
     }
@@ -420,8 +421,9 @@ function dealDealer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
-    document.getElementById('dealer-points').innerhtml = newCard.points
-    dealerScore += Number(newCard.points)
+    // let pointsDealer = document.getElementById('dealer-points')
+    // pointsDealer.innerhtml = newCard.points
+    dealerScore += newCard.points
     console.log(dealerScore)
 }
 
@@ -434,13 +436,33 @@ function dealMysteryCard () {
     document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
-// Flip over the mystery card (display the cardFront)
+// On "stand", flip the dealer's mystery card
 function stand() {
     let mysteryCard = document.getElementById('dealer-hand').firstElementChild
     mysteryCard.setAttribute('src', dealerCards[0].cardFront)
     dealerScore += dealerCards[0].points
+    // As long as dealer's score < 16, deal another card to dealer
+    while (dealerScore <= 16) {
+        dealDealer()
+    }
+    if (dealerScore > 21) {
+        console.log('Congratulations, you won this round!')
+    }
+    if (dealerScore > 16 && dealerScore <= 21) {
+        compareScores()
+    }
+    console.log(playerScore)
     console.log(dealerScore)
-    //count dealer points, and if >16, compare score, if not, dealDealer again
+}
+
+function compareScores () {
+    if (playerScore === dealerScore) {
+        console.log("It's a push!")
+    } else if (playerScore > dealerScore) {
+        console.log('Congratulations, you won this round!')
+    } else {
+        console.log('You lost this round!')
+    }
 }
 
 // function clearTable () {
