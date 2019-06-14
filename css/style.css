@@ -58,6 +58,10 @@ h3 {
     margin: auto;
 }
 
+#card-back {
+    display: none;
+}
+
 .hand img {
     height: 130px;
     width: auto;
