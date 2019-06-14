@@ -74,7 +74,7 @@ var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
 
-// FUNCTION: shuffle deck and store in cardsInPlay
+// FUNCTION: shuffle deck and store in cardsInDeck
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex
 
@@ -95,7 +95,6 @@ function shuffle(array) {
 }
 
 function dealPlayer() {
-    // let newCard = cardsInDeck.pop()
     playerCards.push(cardsInDeck.pop())
     let newCard = playerCards[playerCards.length - 1]
     let newCardElement = document.createElement('img')
@@ -111,38 +110,34 @@ function dealDealer() {
     document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
-function toggleCardBack () {
-//     var firstCard = document.getElementById('dealer-hand').firstChild
-//     // if (firstCard.getAttribute('src') !== 'images/card-images/blue_back.png') {
-//     var 
-//     firstCard.setAttribute('src', 'images/card-images/blue_back.png')
-
-//     }
-//     var firstChild = document.getElementById('card-back')
-//     if (cardBack.style.display === 'none') {
-//         cardBack.style.display = 'block'
-//     } else {
-//         cardBack.style.display = 'none'
-    // }
+// Pop from cardsInDeck array; push to dealDealer array; create new <img> element with src=cardBack
+function dealMysteryCard () {
+    dealerCards.push(cardsInDeck.pop())
+    let newCard = dealerCards[dealerCards.length - 1]
+    let newCardElement = document.createElement('img')
+    newCardElement.setAttribute('src', newCard.cardBack)
+    document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
-function stand() {
 
+function stand() {
+    let mysteryCard = document.getElementById('dealer-hand').firstElementChild
+    mysteryCard.setAttribute('src', dealerCards[0].cardFront)
+    //count dealer points, and if >16, compare score, if not, dealDealer again
 }
 
 function initiateGame() {
     shuffle(cards)
     dealPlayer()
-    dealDealer()
+    dealMysteryCard()
     dealPlayer()
     dealDealer()
-    toggleCardBack()
 }
 
 
 document.getElementById('deal').addEventListener('click', initiateGame)
 document.getElementById('hit').addEventListener('click', dealPlayer)
-document.getElementById('stand').addEventListener('click', dealDealer)
+document.getElementById('stand').addEventListener('click', stand)
 
 
 
