@@ -371,16 +371,18 @@ var cards = [
 //create separate function for first flipped card deal (it also won't increment score until "stand")
 //on "stand", change dealerCards[0] image to "card front" and increment dealer's score by it's "points" property
 
-// Get scores to display on screen
 // Account for Ace values (anytime score > 21, reset Ace points from 11 to 1) -- store a conditional function as the property of Ace-points?
 // Clear table after a game  
 // Implement player messages from console logs  
+//*BUG* -- If you bust when Ace is NOT the most recent card, how do I revert the prior card to 1 from 11?
+        //Currently, It will only revwert the Ace if it's the most recent card dealt
 
 var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
 var dealerScore = 0
 var playerScore = 0
+var overallScore = 0
 
 // FUNCTION: shuffle deck and store in cardsInDeck
 // Citation: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -403,30 +405,52 @@ function shuffle(array) {
     return cardsInDeck
 }
 
+// Deal another card to Player: 
 function dealPlayer() {
     playerCards.push(cardsInDeck.pop())
     let newCard = playerCards[playerCards.length - 1]
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
-    // let pointsPlayer = document.getElementById('player-points')
-    // pointsPlayer.innerhtml = newCard.points
     playerScore += newCard.points
+    // Whenever a card is dealt, if playerScore exceeds 21, check for any Aces in playerCards array. If you find any, subtract 10 from playerScore (i.e. count Ace as 1 point instead of 11).
+    if (playerScore > 21) {
+        for (i = 0; i < playerCards.length; i++) {
+            if (playerCards[i].rank === "ace") {
+                playerScore -= 10
+            }
+        }
+    }
+    document.getElementById('player-points').innerHTML = playerScore
     if (playerScore > 21) {
         console.log('You busted!')
     }
     console.log(playerScore)
 }
 
+//If playerScore > 21, then loop through playerCards array
+//      for each playerCards[i], if playerCards[i].rank === "ace", then
+//         playerCards[i].points = 1
+
+
+
+// Deal another card to Dealer:
 function dealDealer() {
     dealerCards.push(cardsInDeck.pop())
     let newCard = dealerCards[dealerCards.length - 1]
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
-    // let pointsDealer = document.getElementById('dealer-points')
-    // pointsDealer.innerhtml = newCard.points
     dealerScore += newCard.points
+     // Whenever a card is dealt, if playerScore exceeds 21, check for any Aces in playerCards array. If you find any, subtract 10 from playerScore (i.e. count Ace as 1 point instead of 11).
+     if (playerScore > 21) {
+        for (i = 0; i < playerCards.length; i++) {
+            if (playerCards[i].rank === "ace") {
+                playerScore -= 10
+            }
+        }
+    }
+    document.getElementById('dealer-points').innerHTML = dealerScore
     console.log(dealerScore)
 }
 
@@ -444,22 +468,20 @@ function stand() {
     let mysteryCard = document.getElementById('dealer-hand').firstElementChild
     mysteryCard.setAttribute('src', dealerCards[0].cardFront)
     dealerScore += dealerCards[0].points
-    // As long as dealer's score < 16, deal another card to dealer
-    while (dealerScore <= 16) {
+    if (dealerScore > 21 && dealerCards[0].points === 11) {
+        dealerScore -= 10 
+    }
+    // As long as dealer's score < player's score, dealer keeps drawing cards
+    while (dealerScore < playerScore) {
         dealDealer()
-    }
-    if (dealerScore > 21) {
-        console.log('Congratulations, you won this round!')
-    }
-    if (dealerScore > 16 && dealerScore <= 21) {
-        compareScores()
-    }
-    console.log(playerScore)
-    console.log(dealerScore)
+    } compareScores()
 }
 
+// Compare Player's score vs. Dealer's score and determine winner
 function compareScores () {
-    if (playerScore === dealerScore) {
+    if (dealerScore > 21) {
+        console.log('Congratulations, you won this round!')
+    } else if (playerScore === dealerScore) {
         console.log("It's a push!")
     } else if (playerScore > dealerScore) {
         console.log('Congratulations, you won this round!')
@@ -491,6 +513,7 @@ function compareScores () {
 //     playerScore = 0
 // }
 
+// Shuffle deck and deal the intial cards to start a game:
 function initiateGame() {
     // clearTable()
     shuffle(cards)
@@ -502,6 +525,10 @@ function initiateGame() {
         console.log("Black Jack! You win!")
     }
 }
+
+document.getElementById('dealer-points').innerHTML = 0
+document.getElementById('player-points').innerHTML = 0
+document.getElementById('overall-points').innerHTML = 0
 
 document.getElementById('deal').addEventListener('click', initiateGame)
 document.getElementById('hit').addEventListener('click', dealPlayer)
