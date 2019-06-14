@@ -61,6 +61,34 @@ var cards = [
         suit: "clubs",
         cardFront: "images/card-images/10C.png",
         cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "jack",
+        suit: "clubs",
+        cardFront: "images/card-images/JC.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "queen",
+        suit: "clubs",
+        cardFront: "images/card-images/QC.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "king",
+        suit: "clubs",
+        cardFront: "images/card-images/KC.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 11,
+        rank: "ace",
+        suit: "clubs",
+        cardFront: "images/card-images/AC.png",
+        cardBack: "images/card-images/blue_back.png"
     }
     ];
 
@@ -110,7 +138,7 @@ function dealDealer() {
     document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
-// Pop from cardsInDeck array; push to dealDealer array; create new <img> element with src=cardBack
+// Pop from cardsInDeck array; push to dealerCards array; create new <img> element with src=cardBack
 function dealMysteryCard () {
     dealerCards.push(cardsInDeck.pop())
     let newCard = dealerCards[dealerCards.length - 1]
@@ -119,7 +147,7 @@ function dealMysteryCard () {
     document.getElementById('dealer-hand').appendChild(newCardElement)
 }
 
-
+// Flip over the mystery card (display the cardFront)
 function stand() {
     let mysteryCard = document.getElementById('dealer-hand').firstElementChild
     mysteryCard.setAttribute('src', dealerCards[0].cardFront)
