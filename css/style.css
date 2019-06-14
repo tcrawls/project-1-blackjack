@@ -50,6 +50,7 @@ h3 {
     /* justify-content: flex-start;
     align-items: center; */
     margin: 5px 5px;
+    color: yellow;
 }
 
 #dealer-hand, #player-hand {

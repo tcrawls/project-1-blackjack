@@ -405,6 +405,24 @@ function shuffle(array) {
     return cardsInDeck
 }
 
+function calculatePlayerScore () {
+    // Reset playerScore to 0
+    playerScore = 0
+    // Calculate new playerScore by looping through the playerCards array, summing all the point values, and assigning that sum to playerScore
+    for (i = 0; i < playerCards.length; i++) {
+        playerScore += playerCards[i].points
+    }
+}
+
+function calculateDealerScore () {
+    // Reset dealerScore to 0
+    dealerScore = 0
+    // Calculate new dealerScore by looping through the dealerCards array, summing all the point values, and assigning that sum to dealerScore
+    for (i = 0; i < dealerCards.length; i++) {
+        dealerScore += dealerCards[i].points
+    }
+}
+
 // Deal another card to Player: 
 function dealPlayer() {
     playerCards.push(cardsInDeck.pop())
@@ -412,20 +430,23 @@ function dealPlayer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
-    playerScore += newCard.points
-    // Whenever a card is dealt, if playerScore exceeds 21, check for any Aces in playerCards array. If you find any, subtract 10 from playerScore (i.e. count Ace as 1 point instead of 11).
+    calculatePlayerScore()
+    // If playerScore exceeds 21, check for any Aces in playerCards array. If you find any, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
     if (playerScore > 21) {
         for (i = 0; i < playerCards.length; i++) {
             if (playerCards[i].rank === "ace") {
-                playerScore -= 10
+                playerCards[i].points = 1
             }
         }
+        // After modifying Ace values, recalculate playerScore
+        calculatePlayerScore()
     }
     document.getElementById('player-points').innerHTML = playerScore
     if (playerScore > 21) {
         console.log('You busted!')
     }
     console.log(playerScore)
+    console.log(dealerScore)
 }
 
 //If playerScore > 21, then loop through playerCards array
@@ -441,16 +462,22 @@ function dealDealer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
-    dealerScore += newCard.points
-     // Whenever a card is dealt, if playerScore exceeds 21, check for any Aces in playerCards array. If you find any, subtract 10 from playerScore (i.e. count Ace as 1 point instead of 11).
-     if (playerScore > 21) {
-        for (i = 0; i < playerCards.length; i++) {
-            if (playerCards[i].rank === "ace") {
-                playerScore -= 10
+    calculateDealerScore()
+    // If dealerScore exceeds 21, check for any Aces in dealerCards array. If you find any, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
+    if (dealerScore > 21) {
+        for (i = 0; i < dealerCards.length; i++) {
+            if (dealerCards[i].rank === "ace") {
+                dealerCards[i].points = 1
             }
         }
+        // After modifying Ace values, recalculate playerScore
+        calculateDealerScore()
     }
     document.getElementById('dealer-points').innerHTML = dealerScore
+    if (dealerScore > 21) {
+        console.log('Congratulations, you won this round!')
+    }
+    console.log(playerScore)
     console.log(dealerScore)
 }
 
