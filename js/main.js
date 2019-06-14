@@ -1,90 +1,90 @@
 var cards = [
     {
-        points: 2,
+        points: "2",
         rank: "two",
         suit: "clubs",
         cardFront: "images/card-images/2C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 3,
+        points: '3',
         rank: "three",
         suit: "clubs",
         cardFront: "images/card-images/3C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 4,
+        points: '4',
         rank: "four",
         suit: "clubs",
         cardFront: "images/card-images/4C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 5,
+        points: '5',
         rank: "five",
         suit: "clubs",
         cardFront: "images/card-images/5C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 6,
+        points: '6',
         rank: "six",
         suit: "clubs",
         cardFront: "images/card-images/6C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 7,
+        points: '7',
         rank: "seven",
         suit: "clubs",
         cardFront: "images/card-images/7C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 8,
+        points: '8',
         rank: "eight",
         suit: "clubs",
         cardFront: "images/card-images/8C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 9,
+        points: '9',
         rank: "nine",
         suit: "clubs",
         cardFront: "images/card-images/9C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 10,
+        points: '10',
         rank: "ten",
         suit: "clubs",
         cardFront: "images/card-images/10C.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 10,
+        points: '10',
         rank: "jack",
         suit: "clubs",
         cardFront: "images/card-images/JC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 10,
+        points: '10',
         rank: "queen",
         suit: "clubs",
         cardFront: "images/card-images/QC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 10,
+        points: '10',
         rank: "king",
         suit: "clubs",
         cardFront: "images/card-images/KC.png",
         cardBack: "images/card-images/blue_back.png"
     },
     {
-        points: 11,
+        points: '11',
         rank: "ace",
         suit: "clubs",
         cardFront: "images/card-images/AC.png",
@@ -180,8 +180,190 @@ var cards = [
         suit: "hearts",
         cardFront: "images/card-images/AH.png",
         cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 2,
+        rank: "two",
+        suit: "diamonds",
+        cardFront: "images/card-images/2D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 3,
+        rank: "three",
+        suit: "diamonds",
+        cardFront: "images/card-images/3D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 4,
+        rank: "four",
+        suit: "diamonds",
+        cardFront: "images/card-images/4D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 5,
+        rank: "five",
+        suit: "diamonds",
+        cardFront: "images/card-images/5D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 6,
+        rank: "six",
+        suit: "diamonds",
+        cardFront: "images/card-images/6D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 7,
+        rank: "seven",
+        suit: "diamonds",
+        cardFront: "images/card-images/7D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 8,
+        rank: "eight",
+        suit: "diamonds",
+        cardFront: "images/card-images/8D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 9,
+        rank: "nine",
+        suit: "diamonds",
+        cardFront: "images/card-images/9D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "ten",
+        suit: "diamonds",
+        cardFront: "images/card-images/10D.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "jack",
+        suit: "diamonds",
+        cardFront: "images/card-images/JD.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "queen",
+        suit: "diamonds",
+        cardFront: "images/card-images/QD.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "king",
+        suit: "diamonds",
+        cardFront: "images/card-images/KD.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 11,
+        rank: "ace",
+        suit: "diamonds",
+        cardFront: "images/card-images/AD.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 2,
+        rank: "two",
+        suit: "spades",
+        cardFront: "images/card-images/2S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 3,
+        rank: "three",
+        suit: "spades",
+        cardFront: "images/card-images/3S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 4,
+        rank: "four",
+        suit: "spades",
+        cardFront: "images/card-images/4S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 5,
+        rank: "five",
+        suit: "spades",
+        cardFront: "images/card-images/5S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 6,
+        rank: "six",
+        suit: "spades",
+        cardFront: "images/card-images/6S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 7,
+        rank: "seven",
+        suit: "spades",
+        cardFront: "images/card-images/7S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 8,
+        rank: "eight",
+        suit: "spades",
+        cardFront: "images/card-images/8S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 9,
+        rank: "nine",
+        suit: "spades",
+        cardFront: "images/card-images/9S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "ten",
+        suit: "spades",
+        cardFront: "images/card-images/10S.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "jack",
+        suit: "spades",
+        cardFront: "images/card-images/JS.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "queen",
+        suit: "spades",
+        cardFront: "images/card-images/QS.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 10,
+        rank: "king",
+        suit: "spades",
+        cardFront: "images/card-images/KS.png",
+        cardBack: "images/card-images/blue_back.png"
+    },
+    {
+        points: 11,
+        rank: "ace",
+        suit: "spades",
+        cardFront: "images/card-images/AS.png",
+        cardBack: "images/card-images/blue_back.png"
     }
-    ];
+    ]
 
 
 
@@ -198,7 +380,7 @@ var dealerScore = 0
 var playerScore = 0
 
 // FUNCTION: shuffle deck and store in cardsInDeck
-//  *Citation: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// Citation: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex
 
@@ -224,11 +406,11 @@ function dealPlayer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
-    playerScore += newCard.points
+    document.getElementById('player-points').innerhtml = newCard.points
+    playerScore += Number(newCard.points)
     if (playerScore > 21) {
         alert('You busted!')
     }
-    document.getElementById('player-points').innerhtml = playerScore.toString()
     console.log(playerScore)
 }
 
@@ -238,8 +420,8 @@ function dealDealer() {
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
-    dealerScore += newCard.points
-    document.getElementById('dealer-points').innerhtml = dealerScore.toString()
+    document.getElementById('dealer-points').innerhtml = newCard.points
+    dealerScore += Number(newCard.points)
     console.log(dealerScore)
 }
 
@@ -261,7 +443,30 @@ function stand() {
     //count dealer points, and if >16, compare score, if not, dealDealer again
 }
 
+// function clearTable () {
+//     if (playerCards !== []) {
+//         playerCards.pop()
+//         let playerHand = document.getElementById('player-hand')
+//         while (playerHand.lastChild) {
+//             playerHand.removeChild(playerHand.lastChild)
+//         }
+//     }
+//     if (dealerCards !== []) {
+//         dealerCards.pop()
+//         let dealerHand = document.getElementById('dealer-hand')
+//         while (dealerHand.lastChild) {
+//             dealerHand.removeChild(dealerHand.lastChild)
+//         }  
+//     }
+//     cardsInDeck = []
+//     playerCards = []
+//     dealerCards = []
+//     dealerScore = 0
+//     playerScore = 0
+// }
+
 function initiateGame() {
+    // clearTable()
     shuffle(cards)
     dealPlayer()
     dealMysteryCard()
