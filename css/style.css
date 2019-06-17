@@ -53,6 +53,10 @@ h3 {
     color: yellow;
 }
 
+#dealer-points, #player-points {
+    color: white;
+}
+
 #dealer-hand, #player-hand {
     height: 130px;
     width: 700px;

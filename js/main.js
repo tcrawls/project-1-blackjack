@@ -377,7 +377,9 @@ var cards = [
 //*BUG* -- If you bust when Ace is NOT the most recent card, how do I revert the prior card to 1 from 11?
         //Currently, It will only revwert the Ace if it's the most recent card dealt
 // NOTE: If dealer shows an Ace, dealer will accept "push" rather than resetting Ace to 1 and going for the win.
-
+// NOTE: If player is initially dealt 21, automatic Blackjack
+//NOTE: If player hits 21 but NOT on initial deal, then dealer has a chance to match 21
+// *BUG* -- If player is dealt Blackjack (ex: Jack + Ace) -- dealer kept getting dealt past busting (ended with 31)
 
 var cardsInDeck = []
 var playerCards = []
@@ -449,6 +451,7 @@ function dealPlayer() {
     document.getElementById('player-points').innerHTML = playerScore
     if (playerScore > 21) {
         console.log('You busted!')
+        document.getElementById('message-text').innerHTML = "You busted!"
     } else if (playerScore === 21) {
         stand()
     }
@@ -482,6 +485,7 @@ function dealDealer() {
     document.getElementById('dealer-points').innerHTML = dealerScore
     if (dealerScore > 21) {
         console.log("Dealer busted! You win!")
+        document.getElementById('message-text').innerHTML = "Dealer busted! You win!"
     }
     console.log(dealerScore)
 }
@@ -515,16 +519,22 @@ function stand() {
 function compareScores () {
     if (dealerScore > 21 && playerScore > 21) {
         console.log ("It's a push!")
+        document.getElementById('message-text').innerHTML = "It's a push!"
     } else if (dealerScore > 21 && playerScore <= 21) {
         console.log("Dealer busted! You win!")
+        document.getElementById('message-text').innerHTML = "Dealer busted! You win!"
     } else if (playerScore > 21 && dealerScore <= 21) {
         console.log("You busted!")
+        document.getElementById('message-text').innerHTML = "You busted!"
     } else if (playerScore === dealerScore) {
         console.log("It's a push!")
+        document.getElementById('message-text').innerHTML = "It's a push!"
     } else if (playerScore > dealerScore) {
-        console.log("Congratulations, you won this round!")
+        console.log("Congratulations, you win!")
+        document.getElementById('message-text').innerHTML = "Congratulations, you win!"
     } else if (dealerScore > playerScore) {
-        console.log("You lost this round!")
+        console.log("You lost! Better luck next time!")
+        document.getElementById('message-text').innerHTML = "You lost! Better luck next time!"
     }
 }
 
@@ -558,10 +568,12 @@ function initiateGame() {
     dealPlayer()
     dealMysteryCard()
     dealPlayer()
-    dealDealer()
     if (playerScore === 21) {
+        document.getElementById('message-text').innerHTML = "Black Jack! You win!"
         console.log("Black Jack! You win!")
+        return
     }
+    dealDealer()
 }
 
 document.getElementById('dealer-points').innerHTML = 0
