@@ -405,7 +405,7 @@ function shuffle(array) {
     return cardsInDeck
 }
 
-function calculatePlayerScore () {
+function calculatePlayerScore() {
     // Reset playerScore to 0
     playerScore = 0
     // Calculate new playerScore by looping through the playerCards array, summing all the point values, and assigning that sum to playerScore
@@ -414,7 +414,7 @@ function calculatePlayerScore () {
     }
 }
 
-function calculateDealerScore () {
+function calculateDealerScore() {
     // Reset dealerScore to 0
     dealerScore = 0
     // Calculate new dealerScore by looping through the dealerCards array, summing all the point values, and assigning that sum to dealerScore
@@ -423,15 +423,17 @@ function calculateDealerScore () {
     }
 }
 
-// Deal another card to Player: 
+// DEAL TO PLAYER: 
 function dealPlayer() {
+    // Pop from cardsInDeck array and push to playerCards array
     playerCards.push(cardsInDeck.pop())
     let newCard = playerCards[playerCards.length - 1]
+    // Create a new <img> element that displays the front of newCard 
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
     calculatePlayerScore()
-    // If playerScore exceeds 21, check for any Aces in playerCards array. If you find any, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
+    // If playerScore exceeds 21, check for any Aces in playerCards array. If you find one, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
     if (playerScore > 21) {
         for (i = 0; i < playerCards.length; i++) {
             if (playerCards[i].rank === "ace") {
@@ -444,9 +446,10 @@ function dealPlayer() {
     document.getElementById('player-points').innerHTML = playerScore
     if (playerScore > 21) {
         console.log('You busted!')
+    } else if (playerScore === 21) {
+        stand()
     }
     console.log(playerScore)
-    console.log(dealerScore)
 }
 
 //If playerScore > 21, then loop through playerCards array
@@ -455,7 +458,7 @@ function dealPlayer() {
 
 
 
-// Deal another card to Dealer:
+// DEAL TO DEALER:
 function dealDealer() {
     dealerCards.push(cardsInDeck.pop())
     let newCard = dealerCards[dealerCards.length - 1]
@@ -463,7 +466,7 @@ function dealDealer() {
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
     calculateDealerScore()
-    // If dealerScore exceeds 21, check for any Aces in dealerCards array. If you find any, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
+    // If dealerScore exceeds 21, check for any Aces in dealerCards array. If you find one, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
     if (dealerScore > 21) {
         for (i = 0; i < dealerCards.length; i++) {
             if (dealerCards[i].rank === "ace") {
@@ -475,19 +478,19 @@ function dealDealer() {
     }
     document.getElementById('dealer-points').innerHTML = dealerScore
     if (dealerScore > 21) {
-        console.log('Congratulations, you won this round!')
+        console.log("Dealer busted! You win!")
     }
-    console.log(playerScore)
     console.log(dealerScore)
 }
 
 // Pop from cardsInDeck array; push to dealerCards array; create new <img> element with src=cardBack
-function dealMysteryCard () {
+function dealMysteryCard() {
     dealerCards.push(cardsInDeck.pop())
     let newCard = dealerCards[dealerCards.length - 1]
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardBack)
     document.getElementById('dealer-hand').appendChild(newCardElement)
+    console.log("Dealt mystery card")
 }
 
 // On "stand", flip the dealer's mystery card
@@ -506,14 +509,18 @@ function stand() {
 
 // Compare Player's score vs. Dealer's score and determine winner
 function compareScores () {
-    if (dealerScore > 21) {
-        console.log('Congratulations, you won this round!')
+    if (dealerScore > 21 && playerScore > 21) {
+        console.log ("It's a push!")
+    } else if (dealerScore > 21 && playerScore <= 21) {
+        console.log("Dealer busted! You win!")
+    } else if (playerScore > 21 && dealerScore <= 21) {
+        console.log("You busted!")
     } else if (playerScore === dealerScore) {
         console.log("It's a push!")
     } else if (playerScore > dealerScore) {
-        console.log('Congratulations, you won this round!')
-    } else {
-        console.log('You lost this round!')
+        console.log("Congratulations, you won this round!")
+    } else if (dealerScore > playerScore) {
+        console.log("You lost this round!")
     }
 }
 
