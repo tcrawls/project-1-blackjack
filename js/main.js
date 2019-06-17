@@ -376,10 +376,13 @@ var cards = [
 // Implement player messages from console logs  
 //*BUG* -- If you bust when Ace is NOT the most recent card, how do I revert the prior card to 1 from 11?
         //Currently, It will only revwert the Ace if it's the most recent card dealt
+// NOTE: If dealer shows an Ace, dealer will accept "push" rather than resetting Ace to 1 and going for the win.
+
 
 var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
+var mysteryCard = ''
 var dealerScore = 0
 var playerScore = 0
 var overallScore = 0
@@ -485,22 +488,23 @@ function dealDealer() {
 
 // Pop from cardsInDeck array; push to dealerCards array; create new <img> element with src=cardBack
 function dealMysteryCard() {
-    dealerCards.push(cardsInDeck.pop())
-    let newCard = dealerCards[dealerCards.length - 1]
-    let newCardElement = document.createElement('img')
-    newCardElement.setAttribute('src', newCard.cardBack)
-    document.getElementById('dealer-hand').appendChild(newCardElement)
+    // dealerCards.push(cardsInDeck.pop())
+    // let newCard = dealerCards[dealerCards.length - 1]
+    mysteryCard = cardsInDeck.pop()
+    let mysteryCardElement = document.createElement('img')
+    mysteryCardElement.setAttribute('src', mysteryCard.cardBack)
+    document.getElementById('dealer-hand').appendChild(mysteryCardElement)
     console.log("Dealt mystery card")
 }
 
 // On "stand", flip the dealer's mystery card
 function stand() {
-    let mysteryCard = document.getElementById('dealer-hand').firstElementChild
-    mysteryCard.setAttribute('src', dealerCards[0].cardFront)
-    dealerScore += dealerCards[0].points
-    if (dealerScore > 21 && dealerCards[0].points === 11) {
-        dealerScore -= 10 
-    }
+    // Push mysteryCard to front of dealerCards array and display cardFront
+    dealerCards.unshift(mysteryCard)
+    let mysteryCardElement = document.getElementById('dealer-hand').firstElementChild
+    mysteryCardElement.setAttribute('src', mysteryCard.cardFront)
+    calculateDealerScore()
+    document.getElementById('dealer-points').innerHTML = dealerScore
     // As long as dealer's score < player's score, dealer keeps drawing cards
     while (dealerScore < playerScore) {
         dealDealer()
