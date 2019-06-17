@@ -556,7 +556,7 @@ function clearTable() {
     playerScore = 0
     mysteryCard = ''
     document.getElementById('overall-points').innerHTML = overallScore
-    document.getElementById('message-text').innerHTML = "Feeling lucky?<br>Choose STAND or HIT"
+    document.getElementById('message-text').innerHTML = "Let's play!<br>Choose STAND or HIT"
 }
 
 // "DEAL": Shuffle deck and deal the intial cards to start a game:

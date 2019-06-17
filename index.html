@@ -13,21 +13,21 @@
 
 <body>
     <header>
-        <img src="images/header-image.png" class="header-image">
+        <img src="images/header-image.png" class="header-content">
         <h1>BLACKJACK</h1>
-        <img src="images/header-image.png" class="header-image">
+        <img src="images/header-image.png" class="header-content">
     </header>
-    <div class="container"></div>
     <main id="table">
+
         <div id="message">
             <h2 id="message-text">Welcome!<br>Click DEAL to play</h2>
+        </div>
+        <div class="hand" id="dealer-hand">
+
         </div>
         <div id="dealer-score">
             <h3>Dealer:</h3>
             <h3 id="dealer-points"></h3>
-        </div>
-        <div class="hand" id="dealer-hand">
-            
         </div>
         <div id="player-score">
             <h3>Player:</h3>
@@ -42,12 +42,10 @@
             <button id="hit">Hit</button>
         </div>
         <div id="overall-score">
-            <h3>Overall Score:</h3>
-            <h3 id="overall-points"></h3>
-        </div>
-        </div>
+                <h3>Overall:</h3>
+                <h3 id="overall-points"></h3>
+            </div>
     </main>
-</div>
     <footer>Copyright</footer>
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/main.js"></script>
