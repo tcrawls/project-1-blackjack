@@ -555,7 +555,7 @@ function clearTable() {
     dealerScore = 0
     playerScore = 0
     mysteryCard = ''
-    document.getElementById('overall-points').innerHTML = overallScore
+    // document.getElementById('overall-points').innerHTML = overallScore
     document.getElementById('message-text').innerHTML = "Let's play!<br>Choose STAND or HIT"
 }
 
@@ -566,6 +566,7 @@ function initiateGame() {
     dealPlayer()
     dealMysteryCard()
     dealPlayer()
+    dealDealer()
     if (playerScore === 21) {
         document.getElementById('message-text').innerHTML = "Black Jack! You win!<br>Click DEAL to play again"
         overallScore += 1
@@ -573,35 +574,7 @@ function initiateGame() {
         console.log("Black Jack! You win!<br>Click DEAL to play again")
         return
     }
-    dealDealer()
 }
-
-//USE JQUERY .empty() method to empty all elements from a parent element
-// function clearTable () {
-//     if (playerCards !== []) {
-//         playerCards.pop()
-//         let playerHand = document.getElementById('player-hand')
-//         while (playerHand.lastChild) {
-//             playerHand.removeChild(playerHand.lastChild)
-//         }
-//     }
-//     if (dealerCards !== []) {
-//         dealerCards.pop()
-//         let dealerHand = document.getElementById('dealer-hand')
-//         while (dealerHand.lastChild) {
-//             dealerHand.removeChild(dealerHand.lastChild)
-//         }  
-//     }
-//     let cardsInDeck = []
-//     let playerCards = []
-//     let dealerCards = []
-//     let dealerScore = 0
-//     let playerScore = 0
-//     let overallScore = 0
-//     let mysteryCard = ''
-
-// }
-
 
 document.getElementById('dealer-points').innerHTML = 0
 document.getElementById('player-points').innerHTML = 0
