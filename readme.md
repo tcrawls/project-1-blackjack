@@ -1,7 +1,7 @@
 # BLACKJACK
 
 General Assembly SEI 22.1 - Project 1 - June 2019
-  * Project: https://thompson-rawls-blackjack-3.netlify.com/
+  * Project: https://thompson-rawls-blackjack-4.netlify.com/
   * Trello board: https://trello.com/b/Q4jkvKVA/sei221-project-1
   * Github: https://github.com/tcrawls/project-1-blackjack
 
