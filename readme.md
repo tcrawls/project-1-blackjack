@@ -9,6 +9,8 @@ General Assembly SEI 22 - June 2019 - Project 1
 
 The objective of Project 1 was to demonstrate and apply our skills in HTML, CSS, and Javascript to create a fully-functiononal, web-based game that a user could successfully play. For my project, I built a basic game of Blackjack wherein the user (i.e. Player) attempts to beat the Dealer by either "hitting" or "standing" based on the cards dealt in each hand. An "overall score" tracker displays the user's progress against the dealer in total games won/lost.
 
+![alt text](https://github.com/tcrawls/project-1-blackjack/blob/master/images/blackjack-screenshot.png "Blackjack Game Screenshot")
+
 ## How to play
 
 1. Click the Deal button to begin
@@ -19,6 +21,7 @@ The objective of Project 1 was to demonstrate and apply our skills in HTML, CSS,
 
 ## Wireframe
 
+![alt text](https://github.com/tcrawls/project-1-blackjack/blob/master/images/blackjack-wireframe.jpg "Blackjack Wireframe Image")
 
 ## Technologies used
 
