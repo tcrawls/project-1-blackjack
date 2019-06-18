@@ -597,15 +597,6 @@ function initiateGame() {
     dealMysteryCard()
     dealPlayer()
     dealDealer()
-
-    // If player hits 21 on initial deal, player automatically wins that hand
-    if (playerScore === 21) {
-        document.getElementById('message-text').innerHTML = "Black Jack! You win!<br>Click DEAL to play again"
-        overallScore += 1
-        document.getElementById('overall-points').innerHTML = overallScore
-        console.log("Black Jack! You win!<br>Click DEAL to play again")
-        return
-    }
 }
 
 document.getElementById('dealer-points').innerHTML = 0
