@@ -363,28 +363,46 @@ var cards = [
         cardFront: "images/card-images/AS.png",
         cardBack: "images/card-images/blue_back.png"
     }
-    ]
+]
 
+
+// VARIABLES:
+
+// Array containing the shuffled deck of cards for gameplay:
 var cardsInDeck = []
-var playerCards = []
-var dealerCards = []
-var mysteryCard = ''
-var dealerScore = 0
-var playerScore = 0
-var overallScore = ''
 
-// SHUFFLE CARDS FUNCTION:
-// Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// Array containing the Player's current hand:
+var playerCards = []
+
+// Array containing the Dealer's current hand:
+var dealerCards = []
+
+// Dealer's mystery card (face-down) is stored in separate variable:
+var mysteryCard = ''
+
+// Dealer's point total in the current round:
+var dealerScore = 0
+
+// Player's point total in the current round:
+var playerScore = 0
+
+// Player's overall "net" score in games won/lost versus Dealer
+var overallScore = 0
+
+
+// FUNCTIONS:
+
+// SHUFFLE CARDS: (source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-      
+
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex -= 1
-      
+
         // And swap it with the current element.
         temporaryValue = array[currentIndex]
         array[currentIndex] = array[randomIndex]
@@ -451,8 +469,8 @@ function dealPlayer() {
         document.getElementById('message-text').innerHTML = "You busted!<br>Click DEAL to play again."
         overallScore -= 1
         document.getElementById('overall-points').innerHTML = overallScore
-    } 
-    
+    }
+
     // Stand if score is exactly 21
     else if (playerScore === 21) {
         stand()
@@ -516,16 +534,16 @@ function stand() {
     // As long as dealer's score < player's score, dealer keeps drawing cards
     while (dealerScore < playerScore) {
         dealDealer()
-    } 
+    }
     compareScores()
 }
 
 // COMPARE SCORES: 
 function compareScores() {
 
-    // Compare Player's score vs. Dealer's score and display appropriate message
+    // Compare Player's score vs. Dealer's score in the current round; display corresponding message and update overall score
     if (dealerScore > 21 && playerScore > 21) {
-        console.log ("It's a push!")
+        console.log("It's a push!")
         document.getElementById('message-text').innerHTML = "It's a push!<br>Click DEAL to play again."
     } else if (dealerScore > 21 && playerScore <= 21) {
         console.log("Dealer busted! You win!")
@@ -580,7 +598,7 @@ function initiateGame() {
     dealPlayer()
     dealDealer()
 
-    // If player hits 21 on initial deal, automatically wins that hand
+    // If player hits 21 on initial deal, player automatically wins that hand
     if (playerScore === 21) {
         document.getElementById('message-text').innerHTML = "Black Jack! You win!<br>Click DEAL to play again"
         overallScore += 1
