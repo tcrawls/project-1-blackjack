@@ -28,13 +28,14 @@ header img {
     height: 590px;
     width: 900px;
     background-color:rgb(48, 99, 48);
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 #message {
     text-align: center;
     color: yellow;
     background-color: black;
+    border-radius: 30px;
 }
 
 #dealer-score, #player-score, #overall-score {
@@ -82,7 +83,7 @@ h3 {
 }
 
   div button {
-      font-weight: 600;
+      font-weight: 700;
       background-color: rgb(206, 162, 41);
       width: 110px;
       border: none;
