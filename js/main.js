@@ -368,14 +368,6 @@ var cards = [
 
 //*** TO DO ***/
 
-//create separate function for first flipped card deal (it also won't increment score until "stand")
-//on "stand", change dealerCards[0] image to "card front" and increment dealer's score by it's "points" property
-
-// Account for Ace values (anytime score > 21, reset Ace points from 11 to 1) -- store a conditional function as the property of Ace-points?
-// Clear table after a game  
-// Implement player messages from console logs  
-//*BUG* -- If you bust when Ace is NOT the most recent card, how do I revert the prior card to 1 from 11?
-        //Currently, It will only revwert the Ace if it's the most recent card dealt
 // NOTE: If dealer shows an Ace, dealer will accept "push" rather than resetting Ace to 1 and going for the win.
 // NOTE: If player is initially dealt 21, automatic Blackjack
 //NOTE: If player hits 21 but NOT on initial deal, then dealer has a chance to match 21
