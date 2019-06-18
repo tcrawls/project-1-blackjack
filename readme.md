@@ -1,6 +1,6 @@
-# Blackjack
+# BLACKJACK
 
-General Assembly SEI 22 - June 2019 - Project 1
+General Assembly SEI 22.1 - Project 1 - June 2019
   * Project: https://thompson-rawls-blackjack2.netlify.com/
   * Trello board: https://trello.com/b/Q4jkvKVA/sei221-project-1
   * Github: https://github.com/tcrawls/project-1-blackjack
@@ -14,9 +14,9 @@ The objective of Project 1 was to demonstrate and apply our skills in HTML, CSS,
 ## How to play
 
 1. Click the Deal button to begin
-  * Note the "Dealer" and "Player" point totals for each hand as currently displayed
-3. Click the Hit button to hit again, or click Stand to stand with your current cards
-4. After each click, follow the prompt in the Messages field at the top
+    * Note the "Dealer" and "Player" point totals for each hand as currently displayed
+2. Click the Hit button to hit again, or click Stand to stand with your current cards
+3. After each click, follow the prompt in the Messages field at the top
 4. At the end of each hand, click the Deal button to deal another hand
 
 ## Wireframe

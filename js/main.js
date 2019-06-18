@@ -365,15 +365,6 @@ var cards = [
     }
     ]
 
-
-//*** TO DO ***/
-
-// NOTE: If dealer shows an Ace, dealer will accept "push" rather than resetting Ace to 1 and going for the win.
-// NOTE: If player is initially dealt 21, automatic Blackjack
-//NOTE: If player hits 21 but NOT on initial deal, then dealer has a chance to match 21
-// *BUG* -- If player is dealt Blackjack (ex: Jack + Ace) -- dealer kept getting dealt past busting (ended with 31)
-// *BUG* -- If overall score = 1 and player wins, overall score increments to 11 instead of 2
-
 var cardsInDeck = []
 var playerCards = []
 var dealerCards = []
@@ -383,7 +374,7 @@ var playerScore = 0
 var overallScore = ''
 
 // SHUFFLE CARDS FUNCTION:
-// Citation: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex
 
@@ -399,15 +390,17 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex]
         array[randomIndex] = temporaryValue
     }
-    // Store the shuffled deck in cardsInDeck array
+    // Store the shuffled deck/array in cardsInDeck array
     cardsInDeck = array
     return cardsInDeck
 }
 
 // CALCULATE PLAYER'S SCORE:
 function calculatePlayerScore() {
+
     // Reset playerScore to 0
     playerScore = 0
+
     // Calculate new playerScore by looping through the playerCards array, summing all the point values, and assigning that sum to playerScore
     for (i = 0; i < playerCards.length; i++) {
         playerScore += playerCards[i].points
@@ -416,8 +409,10 @@ function calculatePlayerScore() {
 
 // CALCULATE DEALER'S SCORE:
 function calculateDealerScore() {
+
     // Reset dealerScore to 0
     dealerScore = 0
+
     // Calculate new dealerScore by looping through the dealerCards array, summing all the point values, and assigning that sum to dealerScore
     for (i = 0; i < dealerCards.length; i++) {
         dealerScore += dealerCards[i].points
@@ -426,31 +421,40 @@ function calculateDealerScore() {
 
 // DEAL CARD TO PLAYER: 
 function dealPlayer() {
+
     // Pop from cardsInDeck array and push to playerCards array
     playerCards.push(cardsInDeck.pop())
     let newCard = playerCards[playerCards.length - 1]
+
     // Create a new <img> element that displays the front of newCard 
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('player-hand').appendChild(newCardElement)
     calculatePlayerScore()
-    // If playerScore exceeds 21, check for any Aces in playerCards array. If you find one, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
+
+    // If playerScore exceeds 21, check for any Aces in playerCards array. If one is found, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
     if (playerScore > 21) {
         for (i = 0; i < playerCards.length; i++) {
             if (playerCards[i].rank === "ace") {
                 playerCards[i].points = 1
             }
         }
+
         // After modifying Ace values, recalculate playerScore
         calculatePlayerScore()
     }
+
+    // Display updated playerScore on screen and check for bust
     document.getElementById('player-points').innerHTML = playerScore
     if (playerScore > 21) {
         console.log('You busted!')
         document.getElementById('message-text').innerHTML = "You busted!<br>Click DEAL to play again."
         overallScore -= 1
         document.getElementById('overall-points').innerHTML = overallScore
-    } else if (playerScore === 21) {
+    } 
+    
+    // Stand if score is exactly 21
+    else if (playerScore === 21) {
         stand()
     }
     console.log(playerScore)
@@ -458,12 +462,17 @@ function dealPlayer() {
 
 // DEAL CARD TO DEALER:
 function dealDealer() {
+
+    // Pop from cardsInDeck array and push to dealerCards array
     dealerCards.push(cardsInDeck.pop())
     let newCard = dealerCards[dealerCards.length - 1]
+
+    // Create a new <img> element that displays the front of newCard 
     let newCardElement = document.createElement('img')
     newCardElement.setAttribute('src', newCard.cardFront)
     document.getElementById('dealer-hand').appendChild(newCardElement)
     calculateDealerScore()
+
     // If dealerScore exceeds 21, check for any Aces in dealerCards array. If you find one, modify its points to 1 (i.e. count Ace as 1 point instead of 11).
     if (dealerScore > 21) {
         for (i = 0; i < dealerCards.length; i++) {
@@ -471,45 +480,50 @@ function dealDealer() {
                 dealerCards[i].points = 1
             }
         }
+
         // After modifying Ace values, recalculate dealerScore
         calculateDealerScore()
     }
     document.getElementById('dealer-points').innerHTML = dealerScore
-    // if (dealerScore > 21) {
-    //     console.log("Dealer busted! You win!")
-    //     document.getElementById('message-text').innerHTML = "Dealer busted! You win!<br>Click DEAL to play again."
-    //     overallScore += 1
-    //     document.getElementById('overall-points').innerHTML = overallScore
     console.log(dealerScore)
 }
 
 // DEAL MYSTERY CARD:
 function dealMysteryCard() {
-    // Pop from cardsInDeck array and assign to mysterCard
+
+    // Pop from cardsInDeck array and assign to mysteryCard
     mysteryCard = cardsInDeck.pop()
-    // Create new <img> element with src=cardBack
+
+    // Create new <img> element and display cardBack on screen
     let mysteryCardElement = document.createElement('img')
     mysteryCardElement.setAttribute('src', mysteryCard.cardBack)
     document.getElementById('dealer-hand').appendChild(mysteryCardElement)
     console.log("Dealt mystery card")
 }
 
-// "STAND":
+// STAND:
 function stand() {
-    // Flip over mystery card: push mysteryCard to front of dealerCards array and display cardFront
+
+    // Flip over mystery card, push it to front of dealerCards array and display cardFront
     dealerCards.unshift(mysteryCard)
     let mysteryCardElement = document.getElementById('dealer-hand').firstElementChild
     mysteryCardElement.setAttribute('src', mysteryCard.cardFront)
+
+    // Recalculate dealer's score to include points from mystery card
     calculateDealerScore()
     document.getElementById('dealer-points').innerHTML = dealerScore
+
     // As long as dealer's score < player's score, dealer keeps drawing cards
     while (dealerScore < playerScore) {
         dealDealer()
-    } compareScores()
+    } 
+    compareScores()
 }
 
-// Compare Player's score vs. Dealer's score and display message
-function compareScores () {
+// COMPARE SCORES: 
+function compareScores() {
+
+    // Compare Player's score vs. Dealer's score and display appropriate message
     if (dealerScore > 21 && playerScore > 21) {
         console.log ("It's a push!")
         document.getElementById('message-text').innerHTML = "It's a push!<br>Click DEAL to play again."
@@ -539,26 +553,34 @@ function compareScores () {
     }
 }
 
+// CLEAR TABLE:
 function clearTable() {
+
+    // Empty all image elements from dealer and player hands
     $('.hand').empty()
+
+    // Clear array and variable values and update message
     cardsInDeck = []
     playerCards = []
     dealerCards = []
     dealerScore = 0
     playerScore = 0
     mysteryCard = ''
-    // document.getElementById('overall-points').innerHTML = overallScore
     document.getElementById('message-text').innerHTML = "Let's play!<br>Choose STAND or HIT"
 }
 
-// "DEAL": Shuffle deck and deal the intial cards to start a game:
+// DEAL CARDS: 
 function initiateGame() {
+
+    // Clear table, shuffle deck and deal the intial cards to start a game:
     clearTable()
     shuffle(cards)
     dealPlayer()
     dealMysteryCard()
     dealPlayer()
     dealDealer()
+
+    // If player hits 21 on initial deal, automatically wins that hand
     if (playerScore === 21) {
         document.getElementById('message-text').innerHTML = "Black Jack! You win!<br>Click DEAL to play again"
         overallScore += 1
